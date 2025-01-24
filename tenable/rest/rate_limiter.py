@@ -45,9 +45,10 @@ class RateLimiter:
         self.script_sha = self.redis_client.script_load(self.lua_script)
 
     def is_allowed(self, user_id):
-        current_time = int(time.time())
+        current_time = int(time.time() * 1000)
         key = f'rate_limiter:{user_id}'
         result = self.redis_client.evalsha(self.script_sha, 1, key,
-                                           current_time, self.time_frame,
+                                           current_time,
+                                           self.time_frame * 1000,
                                            self.max_calls)
         return result == 1
