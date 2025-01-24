@@ -29,6 +29,7 @@ Commands:
 
     Receives amount of users as a number and keep sending requests to the rest server.
     It is also possible to pass host and port to specifies the rest server address.
+    Stop by pressing <enter>
 
     ```sh
     $ python -m tenable.client run-users [OPTIONS] USERS_AMOUNT

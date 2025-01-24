@@ -29,7 +29,7 @@ def run_users(users_amount, host=REQUEST_HOST, port=SERVER_PORT):
         threads.append(thread)
         thread.start()
     logger.info('all users started')
-    input('Once you press enter it is over')
+    input('Once you press enter it is over\n')
     logger.info('enter was pressed - exiting gracefully')
     run = False
     for thread in threads:

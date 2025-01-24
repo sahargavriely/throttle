@@ -1,4 +1,7 @@
+import os
 from http import HTTPStatus
+import signal
+import threading
 
 import flask
 
@@ -17,6 +20,13 @@ _resources = list()
 def run_server(host: str = LISTEN_HOST, port: int = SERVER_PORT, redis = None):
     app = App(rate_limiter=RateLimiter(redis))
 
+    def wait_for_enter():
+        input('Once you press enter it is over\n')
+        os.kill(os.getpid(), signal.SIGINT)
+
+    timer = threading.Timer(2, wait_for_enter)
+    timer.daemon = True
+
     for path, function in _resources:
         app.resource(path)(function)
     app.error_resource(HTTPStatus.NOT_FOUND)
@@ -30,6 +40,7 @@ def run_server(host: str = LISTEN_HOST, port: int = SERVER_PORT, redis = None):
         'max_requests': 200,
         'max_requests_jitter': 20,
     }
+    timer.start()
     StandaloneApplication(app, options).run()
 
 

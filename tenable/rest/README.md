@@ -29,6 +29,7 @@ Commands:
 
     It is possible to provide host and port to specifies the rest server address.
     It is also possible to provide redis url `'redis://redis:6379'` which will be used as one source of truth.
+    Stop by pressing <enter>
 
     ```sh
     $ python -m tenable.rest run-server [OPTIONS]
