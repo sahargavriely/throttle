@@ -1,0 +1,60 @@
+networks:
+  tenable-net:
+
+volumes:
+  shared-dir:
+
+# if we want my volume to be mapped also outside of the docker
+# x-common-volumes: &common-volumes
+#   type: bind
+#   source: ./source
+#   target: ${SHARED_PATH?err}
+# and this goes for every container that I want to be also mapped outside
+#   volumes:
+#     - <<: *common-volumes
+
+x-common-internal-service: &common-internal-service
+  build:
+    context: ..
+    dockerfile: docker/Dockerfile
+  volumes:
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
+    - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+  networks:
+    - tenable-net
+
+x-common-external-service: &common-external-service
+  env_file:
+    - docker.env
+  networks:
+    - tenable-net
+
+services:
+  redis:
+    <<: *common-external-service
+    image: redis/redis-stack:latest
+    restart: always
+    ports:
+      - ${REDIS_SERVER_PORT?err}:${REDIS_SERVER_PORT?err}
+      - ${REDIS_SERVER_VISUAL_PORT?err}:${REDIS_SERVER_VISUAL_PORT?err}
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+      start_period: 30s
+  server:
+    <<: *common-internal-service
+    command: python -m tenable.rest run-server -p ${REST_PORT?err} -r ${REDIS_URL}
+    ports:
+      - ${REST_PORT?err}:${REST_PORT?err}
+    depends_on:
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${REST_PORT?err}/ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 3s
