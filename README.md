@@ -15,6 +15,11 @@ The sub-packages are:
 - [`rest`](/tenable/rest/README.md) - provides REST api server - http request to get logic.
 
 
+## High Level Design
+
+<img width="608" alt="Image" src="https://github.com/user-attachments/assets/c6378b05-5377-452c-9002-f06f30fe2ce8" />
+
+
 ## Installation
 
 1. Clone the repository and enter it:
