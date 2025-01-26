@@ -11,8 +11,7 @@ from ..utils import (
 )
 
 
-import logging
-logger = setup_logging(__name__, logging.DEBUG, stream_to_screen=True)
+logger = setup_logging(__name__, stream_to_screen=True)
 run = False
 minimal_time_between_request = 0
 maximal_time_between_request = 1

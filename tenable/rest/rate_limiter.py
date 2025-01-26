@@ -36,7 +36,7 @@ class RateLimiter:
         if count < max_calls then
             -- Add the new timestamp
             redis.call('ZADD', key, current_time, current_time)
-            redis.call('EXPIRE', key, 1000000)
+            redis.call('EXPIRE', key, time_frame)
             return 1 -- Allowed
         else
             return 0 -- Denied
