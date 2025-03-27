@@ -4,11 +4,11 @@ import setuptools
 
 
 root = pathlib.Path(__file__).absolute().parent
-package_path = root / 'tenable'
+package_path = root / 'throttle'
 readme_path = root / 'README.md'
 requirements_path = root / 'requirements.txt'
 github_url = 'https://github.com/sahargavriely/' \
-    'tenable'
+    'throttle'
 
 
 def get_version():
@@ -30,7 +30,7 @@ def get_requirements():
 
 def get_package_configuration() -> dict:
     return dict(
-        name = 'tenable',
+        name = 'throttle',
         version = get_version(),
         author = 'Sahar Gavriely',
         author_email = 'gav6sa@gmail.com',
@@ -53,8 +53,8 @@ def get_package_configuration() -> dict:
         install_requires = get_requirements(),
         entry_points = {
             'console_scripts': [
-                'tenable = '
-                'tenable.__main__:main',
+                'throttle = '
+                'throttle.__main__:main',
             ],
         },
     )
