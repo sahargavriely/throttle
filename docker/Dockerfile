@@ -38,7 +38,7 @@ ENV PYTHONUNBUFFERED=1
 # VOLUME /etc/timezone /etc/timezone ro
 # VOLUME usr/share/zoneinfo usr/share/zoneinfo ro
 
-COPY tenable/ /tenable
+COPY throttle/ /throttle
 
 EXPOSE 8080
 

@@ -1,5 +1,5 @@
-import tenable
+import throttle
 
 
 def test():
-    tenable.version
+    throttle.version
