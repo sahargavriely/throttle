@@ -1,9 +1,9 @@
-[![github-workflow](https://github.com/sahargavriely/tenable/actions/workflows/github-action.yml/badge.svg)](https://github.com/sahargavriely/tenable/actions/workflows/github-action.yml)
+[![github-workflow](https://github.com/sahargavriely/throttle/actions/workflows/github-action.yml/badge.svg)](https://github.com/sahargavriely/throttle/actions/workflows/github-action.yml)
 
 
-# tenable
+# throttle
 
-The `tenable` python package includes 2 packages client and rest.
+The `throttle` python package includes 2 packages client and rest.
 
 
 ## Packages
@@ -11,8 +11,8 @@ The `tenable` python package includes 2 packages client and rest.
 The package expose several sub-packages which can be run separately on a different machines.
 The sub-packages are:
 
-- [`client`](/tenable/client/README.md) - executing http request to the rest server.
-- [`rest`](/tenable/rest/README.md) - provides REST api server - http request to get logic.
+- [`client`](/throttle/client/README.md) - executing http request to the rest server.
+- [`rest`](/throttle/rest/README.md) - provides REST api server - http request to get logic.
 
 
 ## High Level Design
@@ -25,9 +25,9 @@ The sub-packages are:
 1. Clone the repository and enter it:
 
     ```sh
-    $ git clone git@github.com:sahargavriely/tenable.git
+    $ git clone git@github.com:sahargavriely/throttle.git
     ...
-    $ cd tenable/
+    $ cd throttle/
     ```
 
 2. Run the installation script and activate the virtual environment:
@@ -36,7 +36,7 @@ The sub-packages are:
     $ ./scripts/install.sh
     ...
     $ source .env/bin/activate
-    [tenable] $  # you're good to go!
+    [throttle] $  # you're good to go!
     ```
 
 3. To check that everything is working as expected, run the tests, or skip that, I'm not your mother:
@@ -58,9 +58,9 @@ The sub-packages are:
     ...
     ```
 
-2. Get our rest server up and running explanation how is here: [`rest`](/tenable/rest/README.md)
+2. Get our rest server up and running explanation how is here: [`rest`](/throttle/rest/README.md)
 
-3. Get our client up and running explanation how is here: [`client`](/tenable/client/README.md)
+3. Get our client up and running explanation how is here: [`client`](/throttle/client/README.md)
 
 ### Docker
 
@@ -80,7 +80,7 @@ While it is possible to execute everything hand it is recommend to use the docke
     ...
     ```
 
-2. Get our client up and running explanation how is here: [`client`](/tenable/client/README.md)
+2. Get our client up and running explanation how is here: [`client`](/throttle/client/README.md)
 
 
 ## Developers Note

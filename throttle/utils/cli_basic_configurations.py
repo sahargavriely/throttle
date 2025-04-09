@@ -4,7 +4,7 @@ import traceback
 
 import click
 
-import tenable
+import throttle
 
 
 class Log:
@@ -28,7 +28,7 @@ log = Log()
 
 
 @click.group(context_settings={'show_default': True})
-@click.version_option(tenable.version)
+@click.version_option(throttle.version)
 @click.option('-q', '--quiet', is_flag=True)
 @click.option('-t', '--traceback', is_flag=True)
 def main(quiet=False, traceback=False):

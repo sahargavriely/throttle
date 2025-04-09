@@ -1,5 +1,5 @@
 networks:
-  tenable-net:
+  throttle-net:
 
 volumes:
   shared-dir:
@@ -22,13 +22,13 @@ x-common-internal-service: &common-internal-service
     - /etc/localtime:/etc/localtime:ro
     - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
   networks:
-    - tenable-net
+    - throttle-net
 
 x-common-external-service: &common-external-service
   env_file:
     - docker.env
   networks:
-    - tenable-net
+    - throttle-net
 
 services:
   redis:
@@ -46,7 +46,7 @@ services:
       start_period: 30s
   server:
     <<: *common-internal-service
-    command: python -m tenable.rest run-server -p ${REST_PORT?err} -r ${REDIS_URL}
+    command: python -m throttle.rest run-server -p ${REST_PORT?err} -r ${REDIS_URL}
     ports:
       - ${REST_PORT?err}:${REST_PORT?err}
     depends_on:
